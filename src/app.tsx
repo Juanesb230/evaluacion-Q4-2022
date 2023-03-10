@@ -5,7 +5,6 @@ import AddCard from "./components/organisms/add-card/add-card";
 
 import "./app.scss";
 
-
 const App = () => {
   return (
     <AppContextProvider>

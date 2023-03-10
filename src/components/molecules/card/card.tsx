@@ -1,42 +1,19 @@
-import { useState } from 'react';
-
 import Button from '../../atoms/button/button'
 import Modal from '../modal/modal';
-
 import DeleteIcon from "../../../assets/delete-icon.svg";
 
-import { useAppContext } from '../../../context/app-context';
-import { GifService } from '../../../services/gif/gif';
-
+import useCard from './use-card/use-card';
+import { Gif } from '../../../utils/interfaces/Gif';
 
 import './card.scss'
-import { Gif } from '../../../utils/interfaces/Gif';
+
 
 export interface CardProps {
   card: Gif
 }
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { gifReducer } = useAppContext()
-  const { gifDispatch } = gifReducer
-  const [openModal, setOpenModal] = useState(false)
-
-  const handleOpenModal = () => {
-    setOpenModal(true)
-  }
-
-  const closeModal = () => {
-    setOpenModal(false)
-  }
-
-  const onDelete = async() => {
-    try{
-      GifService.deleteGif(card)
-      closeModal()
-      gifDispatch({type: 'deleteGif', payload: card.id || -1})
-    }catch(e){
-    }
-  }
+  const { openModal, handleOpenModal, onDelete, closeModal } = useCard(card)
 
   return (
     <>

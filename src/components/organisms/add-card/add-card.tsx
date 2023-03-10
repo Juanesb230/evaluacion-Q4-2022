@@ -8,10 +8,6 @@ import { useAppContext } from '../../../context/app-context'
 
 import './add-card.scss'
 
-export interface AddcardProps {
-  onAdd: (url: string) => void
-}
-
 
 const AddCard = () => {
   const { gifReducer } = useAppContext()
@@ -21,7 +17,6 @@ const AddCard = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {value} = e.target
-    console.log('entro', value)
     setUrlInput(value)
   }
 

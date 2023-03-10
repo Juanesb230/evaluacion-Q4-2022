@@ -14,7 +14,7 @@ export class GifService {
   }
 
   static async createGif(gif: Gif) {
-    const { data } = await axios.post(API_URL, { ...gif, author_id: 2 })
-    return data as Gif
+    const { data } = await axios.post<Gif>(API_URL, { ...gif, author_id: 2 })
+    return data
   }
 }
